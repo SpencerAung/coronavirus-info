@@ -1,4 +1,6 @@
 import styled from '@emotion/styled'
+import Router from 'next/router'
+import withGA from 'next-ga'
 
 import '../styles/normalize.css'
 import '../styles/style.css'
@@ -15,7 +17,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default function MyApp ({ Component, pageProps }) {
+function MyApp ({ Component, pageProps }) {
   return (
     <Wrapper>
       <Component {...pageProps} />
@@ -25,3 +27,5 @@ export default function MyApp ({ Component, pageProps }) {
     </Wrapper>
   )
 }
+
+export default withGA('UA-143775629-4', Router)(MyApp)
