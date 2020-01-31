@@ -9,7 +9,12 @@ const StatusTable = () => {
     return acc
   }, {})
   return (
-    <div>
+    <div
+      style={{
+        width: '300px',
+        margin: '0 auto'
+      }}
+    >
       <div>
         <p>Infected Countries: {infectedCountries}</p>
         <p>Total Infected: {totalInfected}</p>

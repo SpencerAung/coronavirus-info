@@ -3,7 +3,7 @@ import StatusTable from '../components/StatusTable'
 function HomePage () {
   return (
     <div>
-      <h1>Coronvirus Info</h1>
+      <h1 style={{ textAlign: 'center' }}>Coronvirus Info</h1>
       <StatusTable />
     </div>
   )
