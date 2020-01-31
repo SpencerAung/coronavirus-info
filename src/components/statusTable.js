@@ -75,7 +75,7 @@ const StatusTable = () => {
   const lastUpdated = new Date(time)
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <SummaryItem>
         <p>Infected Countries: <span className='number'>{infectedCountries}</span></p>
         <p>Total Confirmed: <span className='number'>{totalConfirmed}</span></p>

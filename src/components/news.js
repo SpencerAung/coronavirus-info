@@ -52,6 +52,9 @@ const News = () => {
       {fetchedNews.map((article) => (
         <NewsItem key={article.publishedAt} {...article} />
       ))}
+      <p>
+        <small>Powered by: <a href='https://newsapi.org' target='blank' rel='nofollwer noreferer noopener'>NewsAPI.org</a></small>
+      </p>
     </div>
   )
 }

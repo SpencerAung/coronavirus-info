@@ -9,7 +9,9 @@ const Wrapper = styled.div`
 
   @media (max-width: 420px) {
     width: 100%;
-    margin: 20rem;
+    max-width: 100%;
+    margin: 0;
+    padding: 20rem;
   }
 `
 

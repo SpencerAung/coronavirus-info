@@ -1,5 +1,10 @@
 html{
    font-size: 1px;/*for using REM units*/
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body{
