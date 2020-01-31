@@ -72,13 +72,16 @@ function useApiData () {
 const StatusTable = () => {
   const fetchedData = useApiData()
   const infectedCountries = fetchedData.length
-  const { totalRecovered, totalConfirmed, totalDeaths } = fetchedData.reduce((acc, cur) => {
+  const { totalRecovered, totalConfirmed, totalDeaths, time } = fetchedData.reduce((acc, cur) => {
     acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
     acc.totalDeaths = acc.totalDeaths + cur.deaths || cur.deaths
     acc.totalRecovered = acc.totalRecovered + cur.recovered || cur.recovered
+    acc.time = cur.lastUpdate
 
     return acc
   }, {})
+
+  const lastUpdated = new Date(time)
 
   return (
     <Wrapper>
@@ -87,6 +90,7 @@ const StatusTable = () => {
         <p>Total Confirmed: <span className='number'>{totalConfirmed}</span></p>
         <p>Total Recovered: <span className='number'>{totalRecovered}</span></p>
         <p>Total Deaths: <span className='number'>{totalDeaths}</span></p>
+        <p><small>Updated on: {lastUpdated.toString()}</small></p>
       </SummaryItem>
       <Table>
         <thead>
