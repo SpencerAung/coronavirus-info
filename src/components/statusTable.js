@@ -24,6 +24,15 @@ const Table = styled.table`
 
   td {
     border: 1px solid #d1d1e9;
+
+    &.number {
+      text-align: right;
+    }
+
+    &.zero-case {
+      color: #72757e;
+      font-weight: 200;
+    }
   }
 `
 
@@ -87,9 +96,9 @@ const StatusTable = () => {
           {fetchedData.map(({ country, confirmed, recovered, deaths }) => (
             <tr key={country}>
               <td>{country}</td>
-              <td style={{ textAlign: 'right' }}>{confirmed}</td>
-              <td style={{ textAlign: 'right' }}>{recovered}</td>
-              <td style={{ textAlign: 'right' }}>{deaths}</td>
+              <td className={`number ${!confirmed && 'zero-case'}`}>{confirmed}</td>
+              <td className={`number ${!recovered && 'zero-case'}`}>{recovered}</td>
+              <td className={`number ${!deaths && 'zero-case'}`}>{deaths}</td>
             </tr>
           ))}
         </tbody>
