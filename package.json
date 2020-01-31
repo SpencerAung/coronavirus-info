@@ -1,0 +1,36 @@
+{
+  "name": "blue-water",
+  "version": "1.0.0",
+  "description": "Template repository for JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"format": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpencerAung/blue-water.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpencerAung/blue-water/issues"
+  },
+  "homepage": "https://github.com/SpencerAung/blue-water#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "backpack-core": "^0.8.4",
+    "eslint": "^6.6.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "standard": "^14.3.1"
+  },
+	"lint-staged": {
+		"*.js": ["npm run format", "git add"]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	}
+}
