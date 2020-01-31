@@ -1,5 +1,5 @@
 {
-  "name": "blue-water",
+  "name": "coronavirus-info",
   "version": "1.0.0",
   "description": "Template repository for JS",
   "main": "index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpencerAung/blue-water.git"
+    "url": "git+https://github.com/SpencerAung/coronavirus-info.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SpencerAung/blue-water/issues"
+    "url": "https://github.com/SpencerAung/coronavirus-info/issues"
   },
-  "homepage": "https://github.com/SpencerAung/blue-water#readme",
+  "homepage": "https://github.com/SpencerAung/coronavirus-info#readme",
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "backpack-core": "^0.8.4",

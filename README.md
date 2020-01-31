@@ -1,2 +1,3 @@
-# blue-water
-Template repository for JS
+# Coronavirus Info Website
+
+
