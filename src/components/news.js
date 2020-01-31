@@ -22,14 +22,12 @@ const SOURCES = [
   'msnbc'
 ].join(',')
 
-const FROM = new Date().toISOString().slice(0, 10)
-
-function useFetchedNews () {
+function useFetchedNews (fromDate) {
   const [news, updateNews] = useState([])
 
   useEffect(() => {
     async function fetchNews () {
-      const fetched = await fetch(`https://newsapi.org/v2/top-headlines?sources=${SOURCES}&q=coronavirus&from=${FROM}&sortBy=publishedAt&apiKey=${API_KEY}`)
+      const fetched = await fetch(`https://newsapi.org/v2/top-headlines?sources=${SOURCES}&q=coronavirus&from=${fromDate}&sortBy=publishedAt&apiKey=${API_KEY}`)
       const result = await fetched.json()
 
       updateNews(result.articles)
@@ -40,14 +38,26 @@ function useFetchedNews () {
   return news
 }
 
+function getToday () {
+  const today = new Date()
+  let date = today.getDate()
+  date = date > 9 ? date : `0${date}`
+
+  let month = today.getMonth() + 1
+  month = month > 9 ? month : `0${month}`
+
+  return [today.getFullYear(), month, date].join('-')
+}
+
 const News = () => {
-  const fetchedNews = useFetchedNews()
+  const today = getToday()
+  const fetchedNews = useFetchedNews(today)
 
   return (
     <div style={{ margin: '80rem 0' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>News</h1>
-        <p>{FROM}</p>
+        <p>{today}</p>
       </div>
       {fetchedNews.map((article) => (
         <NewsItem key={article.publishedAt} {...article} />
