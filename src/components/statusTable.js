@@ -25,15 +25,6 @@ const Table = styled.table`
   }
 `
 
-const Wrapper = styled.div`
-  width: 500px;
-  margin: 0 auto;
-
-  @media (max-width: 420px) {
-    width: 100%;
-  }
-`
-
 const SummaryItem = styled.div`
   .number {
     color: #e45858;
@@ -84,7 +75,7 @@ const StatusTable = () => {
   const lastUpdated = new Date(time)
 
   return (
-    <Wrapper>
+    <div>
       <SummaryItem>
         <p>Infected Countries: <span className='number'>{infectedCountries}</span></p>
         <p>Total Confirmed: <span className='number'>{totalConfirmed}</span></p>
@@ -117,7 +108,7 @@ const StatusTable = () => {
         Data source: <a href='https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#' target='blank' rel='noreferer nofollow noopener'>Novel Coronavirus (2019-nCoV) Cases, provided by JHU CSSE</a>
         </small>
       </p>
-    </Wrapper>
+    </div>
   )
 }
 
