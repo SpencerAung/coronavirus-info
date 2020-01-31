@@ -10,6 +10,10 @@ const Table = styled.table`
 
   th, td {
     padding: 8rem;
+
+    @media (max-width: 420px) {
+      padding: 5rem;
+    }
   }
 
   th {
