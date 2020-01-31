@@ -112,6 +112,11 @@ const StatusTable = () => {
           ))}
         </tbody>
       </Table>
+      <p>
+        <small>
+        Data source: <a href='https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#' target='blank' rel='noreferer nofollow noopener'>Novel Coronavirus (2019-nCoV) Cases, provided by JHU CSSE</a>
+        </small>
+      </p>
     </Wrapper>
   )
 }
