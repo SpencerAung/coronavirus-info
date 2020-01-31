@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import fetch from 'node-fetch'
 
+import Summary from './summary'
+
 const Table = styled.table`
   width: 100%;
   border: none;
@@ -22,12 +24,6 @@ const Table = styled.table`
 
   td {
     border: 1px solid #d1d1e9;
-  }
-`
-
-const SummaryItem = styled.div`
-  .number {
-    color: #e45858;
   }
 `
 
@@ -76,13 +72,8 @@ const StatusTable = () => {
 
   return (
     <div style={{ width: '100%' }}>
-      <SummaryItem>
-        <p>Infected Countries: <span className='number'>{infectedCountries}</span></p>
-        <p>Total Confirmed: <span className='number'>{totalConfirmed}</span></p>
-        <p>Total Recovered: <span className='number'>{totalRecovered}</span></p>
-        <p>Total Deaths: <span className='number'>{totalDeaths}</span></p>
-        <p><small>Updated on: {lastUpdated.toString()}</small></p>
-      </SummaryItem>
+      <Summary numberOfCountries={infectedCountries} totalRecovered={totalRecovered} totalConfirmed={totalConfirmed} totalDeaths={totalDeaths} />
+      <p><small>Updated on: {lastUpdated.toString()}</small></p>
       <Table>
         <thead>
           <tr>
