@@ -1,0 +1,38 @@
+html{
+   font-size: 1px;/*for using REM units*/
+}
+
+body{
+   font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+   font-size: 16rem;
+   font-weight: 400;
+   line-height: 1.3;
+   color: #222;
+   background-color: #fffffe;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #00214d;
+  font-family: Lato, sans-serif;
+}
+
+p,
+div {
+  color: #1b2d45;
+}
+
+a,
+a:visited {
+  color: #00ebc7;
+  text-decoration: underline;
+}
+
+input[type=button],
+button {
+  font-family: Lato, sans-serif;
+}
