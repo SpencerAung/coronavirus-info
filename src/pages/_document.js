@@ -12,7 +12,7 @@ class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           <Seo />
-          <link href='https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap' rel='stylesheet' />
+          <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,700&display=swap' rel='stylesheet' />
         </Head>
         <body>
           <Main />
