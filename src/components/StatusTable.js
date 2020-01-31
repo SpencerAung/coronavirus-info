@@ -1,4 +1,5 @@
 import data from '../data'
+import styles from './StatusTable.module.css'
 
 const StatusTable = () => {
   const infectedCountries = data.length
@@ -20,12 +21,12 @@ const StatusTable = () => {
         <p>Total Infected: {totalInfected}</p>
         <p>Total Deaths: {totalDeaths}</p>
       </div>
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
-            <td>Country</td>
-            <td>Infected</td>
-            <td>Deaths</td>
+            <th className={styles.th}>Country</th>
+            <th className={styles.th}>Infected</th>
+            <th className={styles.th}>Deaths</th>
           </tr>
         </thead>
         <tbody>
