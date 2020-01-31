@@ -1,5 +1,25 @@
+import styled from '@emotion/styled'
+
 import data from '../data'
-import styles from './StatusTable.module.css'
+
+const Table = styled.table`
+  width: 100%;
+  border: none;
+  outline: none;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 8rem;
+  }
+
+  th {
+    background-color: #d1d1e9;
+  }
+
+  td {
+    border: 1px solid #d1d1e9;
+  }
+`
 
 const StatusTable = () => {
   const infectedCountries = data.length
@@ -21,24 +41,24 @@ const StatusTable = () => {
         <p>Total Infected: {totalInfected}</p>
         <p>Total Deaths: {totalDeaths}</p>
       </div>
-      <table className={styles.table}>
+      <Table>
         <thead>
           <tr>
-            <th className={styles.th}>Country</th>
-            <th className={styles.th}>Infected</th>
-            <th className={styles.th}>Deaths</th>
+            <th>Country</th>
+            <th>Infected</th>
+            <th>Deaths</th>
           </tr>
         </thead>
         <tbody>
           {data.map(({ country, infected, deaths }) => (
             <tr key={country}>
               <td>{country}</td>
-              <td>{infected}</td>
-              <td>{deaths}</td>
+              <td style={{ textAlign: 'right' }}>{infected}</td>
+              <td style={{ textAlign: 'right' }}>{deaths}</td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }
