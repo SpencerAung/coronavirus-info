@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 
 const Wrapper = styled.div`
+  margin: 30rem 0;
+
   h3 small {
     color: #d1d1e9;
   }
