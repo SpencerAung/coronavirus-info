@@ -1,6 +1,6 @@
+import { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
-
-import data from '../data'
+import fetch from 'node-fetch'
 
 const Table = styled.table`
   width: 100%;
@@ -21,45 +21,90 @@ const Table = styled.table`
   }
 `
 
+const Wrapper = styled.div`
+  width: 500px;
+  margin: 0 auto;
+
+  @media (max-width: 420px) {
+    width: 100%;
+  }
+`
+
+const SummaryItem = styled.div`
+  .number {
+    color: #e45858;
+  }
+`
+
+function useApiData () {
+  const api = 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Confirmed%20desc%2CCountry_Region%20asc&resultOffset=0&resultRecordCount=100&cacheHint=true'
+  const [data, updateData] = useState([])
+
+  useEffect(() => {
+    async function fetchData () {
+      const fetched = await fetch(api)
+      const result = await fetched.json()
+
+      const infectedCountries = result.features.map(({ attributes: country }) => {
+        return {
+          country: country.Country_Region,
+          lastUpdate: country.Last_Update,
+          lat: country.Lat,
+          long: country.Long_,
+          confirmed: country.Confirmed,
+          deaths: country.Deaths || 0,
+          recovered: country.Recovered || 0
+        }
+      })
+
+      updateData(infectedCountries)
+    }
+    fetchData()
+  }, [])
+
+  return data
+}
+
 const StatusTable = () => {
-  const infectedCountries = data.length
-  const { totalInfected, totalDeaths } = data.reduce((acc, cur) => {
-    acc.totalInfected = acc.totalInfected + cur.infected || cur.infected
+  const fetchedData = useApiData()
+  const infectedCountries = fetchedData.length
+  const { totalRecovered, totalConfirmed, totalDeaths } = fetchedData.reduce((acc, cur) => {
+    acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
     acc.totalDeaths = acc.totalDeaths + cur.deaths || cur.deaths
+    acc.totalRecovered = acc.totalRecovered + cur.recovered || cur.recovered
 
     return acc
   }, {})
+
   return (
-    <div
-      style={{
-        width: '300px',
-        margin: '0 auto'
-      }}
-    >
-      <div>
-        <p>Infected Countries: {infectedCountries}</p>
-        <p>Total Infected: {totalInfected}</p>
-        <p>Total Deaths: {totalDeaths}</p>
-      </div>
+    <Wrapper>
+      <SummaryItem>
+        <p>Infected Countries: <span className='number'>{infectedCountries}</span></p>
+        <p>Total Confirmed: <span className='number'>{totalConfirmed}</span></p>
+        <p>Total Recovered: <span className='number'>{totalRecovered}</span></p>
+        <p>Total Deaths: <span className='number'>{totalDeaths}</span></p>
+      </SummaryItem>
       <Table>
         <thead>
           <tr>
             <th>Country</th>
-            <th>Infected</th>
+            <th>Confirmed</th>
+            <th>Recovered</th>
             <th>Deaths</th>
           </tr>
         </thead>
         <tbody>
-          {data.map(({ country, infected, deaths }) => (
+          {fetchedData.map(({ country, confirmed, recovered, deaths }) => (
             <tr key={country}>
               <td>{country}</td>
-              <td style={{ textAlign: 'right' }}>{infected}</td>
+              <td style={{ textAlign: 'right' }}>{confirmed}</td>
+              <td style={{ textAlign: 'right' }}>{recovered}</td>
               <td style={{ textAlign: 'right' }}>{deaths}</td>
             </tr>
           ))}
         </tbody>
       </Table>
-    </div>
+    </Wrapper>
   )
 }
 

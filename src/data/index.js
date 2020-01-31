@@ -110,7 +110,7 @@ export default [
     deaths: 0
   },
   {
-    country: 'Phillippine',
+    country: 'Philippines',
     infected: 1,
     deaths: 0
   }
