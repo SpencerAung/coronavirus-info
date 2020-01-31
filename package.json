@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"format": "standard --fix"
+    "format": "standard --fix",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -25,12 +28,20 @@
     "lint-staged": "^9.4.2",
     "standard": "^14.3.1"
   },
-	"lint-staged": {
-		"*.js": ["npm run format", "git add"]
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	}
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
 }
