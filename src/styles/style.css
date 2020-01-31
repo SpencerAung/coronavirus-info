@@ -23,12 +23,14 @@ h4,
 h5,
 h6 {
   color: #6246ea;
+  font-weight: 700;
   font-family: Lato, sans-serif;
 }
 
 p,
 div {
   color: #2b2c34;
+  font-weight: 400;
 }
 
 a,
