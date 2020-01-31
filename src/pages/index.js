@@ -1,4 +1,4 @@
-import StatusTable from '../components/StatusTable'
+import StatusTable from '../components/statusTable'
 
 function HomePage () {
   return (
