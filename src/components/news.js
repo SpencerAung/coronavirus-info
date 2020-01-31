@@ -63,7 +63,7 @@ const News = () => {
         <NewsItem key={article.publishedAt} {...article} />
       ))}
       <p>
-        <small>Powered by: <a href='https://newsapi.org' target='blank' rel='nofollwer noreferer noopener'>NewsAPI.org</a></small>
+        <small>Powered by: <a href='https://newsapi.org' target='_blank' rel='nofollw noreferrer noopener'>NewsAPI.org</a></small>
       </p>
     </div>
   )

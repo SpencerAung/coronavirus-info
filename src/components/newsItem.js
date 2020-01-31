@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 const NewsItem = ({ source, title, url }) => (
   <Wrapper>
-    <h3><a href={url} target='blank' rel='nofollower noreferer noopener'>{title}</a> <small>-{source.name}</small></h3>
+    <h3><a href={url} target='_blank' rel='nofollow noreferrer noopener'>{title}</a> <small>-{source.name}</small></h3>
   </Wrapper>
 )
 

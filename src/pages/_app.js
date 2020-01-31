@@ -22,7 +22,7 @@ function MyApp ({ Component, pageProps }) {
     <Wrapper>
       <Component {...pageProps} />
       <footer style={{ textAlign: 'center', margin: '50rem' }}>
-        <a href='https://github.com/SpencerAung/coronavirus-info' target='blank'>github</a>
+        <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'>github</a>
       </footer>
     </Wrapper>
   )
