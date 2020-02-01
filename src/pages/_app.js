@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
 import Router from 'next/router'
 import withGA from 'next-ga'
+import { ThemeProvider } from 'emotion-theming'
 
 import '../styles/normalize.css'
 import '../styles/style.css'
+import theme from '../theme'
 
 const Wrapper = styled.div`
   width: 600px;
@@ -19,12 +21,14 @@ const Wrapper = styled.div`
 
 function MyApp ({ Component, pageProps }) {
   return (
-    <Wrapper>
-      <Component {...pageProps} />
-      <footer style={{ textAlign: 'center', margin: '50rem' }}>
-        <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'>github</a>
-      </footer>
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <Component {...pageProps} />
+        <footer style={{ textAlign: 'center', margin: '50rem' }}>
+          <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'>github</a>
+        </footer>
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 

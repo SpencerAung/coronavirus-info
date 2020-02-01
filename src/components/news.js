@@ -1,56 +1,9 @@
-import { useState, useEffect } from 'react'
-import fetch from 'node-fetch'
 import styled from '@emotion/styled'
+import { useState } from 'react'
 
 import NewsItem from './newsItem'
-
-const API_KEY = '894616ef9e184b438defe23419455060'
-const SOURCES = [
-  'abc-news',
-  'abc-news-au',
-  'al-jazeera-english',
-  'bbc-news',
-  'cnn',
-  'google-news',
-  'reuters',
-  'the-times-of-india',
-  'time',
-  'cbc-news',
-  'cbs-news',
-  'fox-news',
-  'independent',
-  'medical-news-today',
-  'msnbc'
-].join(',')
-
-function useFetchedNews (fromTime) {
-  const [news, updateNews] = useState([])
-  const fromDate = getFormattedDate(fromTime)
-
-  useEffect(() => {
-    async function fetchNews () {
-      const fetched = await fetch(`https://newsapi.org/v2/top-headlines?sources=${SOURCES}&q=coronavirus&from=${fromDate}&sortBy=publishedAt&apiKey=${API_KEY}`)
-      const result = await fetched.json()
-
-      updateNews(result.articles)
-    }
-
-    updateNews([])
-    fetchNews()
-  }, [fromTime])
-
-  return news
-}
-
-function getFormattedDate (today = new Date()) {
-  let date = today.getDate()
-  date = date > 9 ? date : `0${date}`
-
-  let month = today.getMonth() + 1
-  month = month > 9 ? month : `0${month}`
-
-  return [today.getFullYear(), month, date].join('-')
-}
+import { getFormattedDate } from '../helpers'
+import useFetchedNews from '../hooks/useFetchedNews'
 
 const RefreshButton = styled.button`
   background-color: transparent;
