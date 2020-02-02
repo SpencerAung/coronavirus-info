@@ -9,8 +9,7 @@ const base = Airtable.base('appbPNf9mGxdVDQko')
 const fetchMyanmarNews = () => {
   return new Promise((resolve, reject) => {
     base('MyanmarNews').select({
-      view: 'Grid view',
-      sort: [{ field: 'date', direction: 'desc' }]
+      view: 'Grid view'
     }).firstPage(function (err, records) {
       if (err) {
         reject(err)
