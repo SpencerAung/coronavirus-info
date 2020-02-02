@@ -22,18 +22,21 @@ const Table = styled.table`
   th, td {
     padding: 8rem;
     border: 1px solid #d1d1e9;
+    text-align: right;
 
     @media (max-width: 420px) {
       padding: 5rem;
     }
   }
 
-  th {
-    background-color: #d1d1e9;
+  th:first-child,
+  td:first-child {
+    text-align: left;
   }
 
-  td.number {
-    text-align: right;
+  th {
+    background-color: #d1d1e9;
+    font-weight: 200;
   }
 
   td.zero-case {
@@ -75,9 +78,9 @@ const StatusTable = () => {
               .map(({ country, confirmed, recovered, deaths }) => (
                 <tr key={country}>
                   <td>{country}</td>
-                  <td className={`number ${!confirmed && 'zero-case'}`}>{toLocaleString(confirmed)}</td>
-                  <td className={`number ${!recovered && 'zero-case'}`}>{toLocaleString(recovered)}</td>
-                  <td className={`number ${!deaths && 'zero-case'}`}>{toLocaleString(deaths)}</td>
+                  <td className={!confirmed && 'zero-case'}>{toLocaleString(confirmed)}</td>
+                  <td className={!recovered && 'zero-case'}>{toLocaleString(recovered)}</td>
+                  <td className={!deaths && 'zero-case'}>{toLocaleString(deaths)}</td>
                 </tr>
               ))}
           </tbody>
