@@ -3,6 +3,7 @@ import Router from 'next/router'
 import withGA from 'next-ga'
 import { ThemeProvider } from 'emotion-theming'
 
+import NavBar from '../components/navBar'
 import '../styles/normalize.css'
 import '../styles/style.css'
 import theme from '../theme'
@@ -23,6 +24,7 @@ function MyApp ({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
+        <NavBar />
         <Component {...pageProps} />
         <footer style={{ textAlign: 'center', margin: '50rem' }}>
           <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'>github</a>

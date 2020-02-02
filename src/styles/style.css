@@ -43,3 +43,8 @@ input[type=button],
 button {
   font-family: Lato, sans-serif;
 }
+
+.mm-font {
+  font-family: Padauk, sans-serif;
+  line-height: 1.5;
+}

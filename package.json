@@ -42,6 +42,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "airtable": "^0.8.1",
     "emotion-theming": "^10.0.27",
     "next": "^9.2.1",
     "next-ga": "^2.3.4",

@@ -32,7 +32,7 @@ const News = () => {
         </div>
       )}
       {fetchedNews.map((article) => (
-        <NewsItem key={article.urlToImage} {...article} />
+        <NewsItem key={article.urlToImage} {...article} source={article.source.name} />
       ))}
       <p>
         <small>Powered by: <a href='https://newsapi.org' target='_blank' rel='nofollw noreferrer noopener'>NewsAPI.org</a></small>
