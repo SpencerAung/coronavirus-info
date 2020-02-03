@@ -6,10 +6,13 @@ export default function useStatus () {
 
   useEffect(() => {
     async function fetchStatus () {
-      const fetched = await fetch('/api/status')
-      const result = await fetched.json()
+      try {
+        const fetched = await fetch('/api/status')
+        const result = await fetched.json()
 
-      updateStatus(result)
+        updateStatus(result)
+      } catch (e) {
+      }
     }
 
     fetchStatus()

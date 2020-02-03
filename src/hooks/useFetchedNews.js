@@ -28,10 +28,13 @@ export default function useFetchedNews (fromTime) {
 
   useEffect(() => {
     async function fetchNews () {
-      const fetched = await fetch(`https://newsapi.org/v2/top-headlines?sources=${SOURCES}&q=coronavirus&from=${fromDate}&sortBy=publishedAt&apiKey=${API_KEY}`)
-      const result = await fetched.json()
+      try {
+        const fetched = await fetch(`https://newsapi.org/v2/top-headlines?sources=${SOURCES}&q=coronavirus&from=${fromDate}&sortBy=publishedAt&apiKey=${API_KEY}`)
+        const result = await fetched.json()
 
-      updateNews(result.articles)
+        updateNews(result.articles)
+      } catch (e) {
+      }
     }
 
     updateNews([])

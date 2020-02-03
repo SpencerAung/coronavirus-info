@@ -6,10 +6,13 @@ export default function useMyanmarNews () {
 
   useEffect(() => {
     async function fetchNews () {
-      const fetched = await fetch('/api/myanmar-news')
-      const records = await fetched.json()
+      try {
+        const fetched = await fetch('/api/myanmar-news')
+        const records = await fetched.json()
 
-      updateNews(records)
+        updateNews(records)
+      } catch (e) {
+      }
     }
 
     fetchNews()
