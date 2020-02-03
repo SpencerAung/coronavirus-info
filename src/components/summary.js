@@ -68,6 +68,9 @@ const getSummarizedData = (data = []) => data.reduce((acc, cur) => {
     acc.time = cur.lastUpdate
   }
 
+  if (cur.cachedAt) {
+    acc.cachedAt = acc.cachedAt || cur.cachedAt < 0 ? acc.cachedAt : cur.cachedAt
+  }
   return acc
 }, {})
 
@@ -77,9 +80,9 @@ const Summary = ({ data = [] }) => {
   }
 
   const countries = data.length
-  const { totalRecovered, totalConfirmed, totalDeaths, time } = getSummarizedData(data)
+  const { totalRecovered, totalConfirmed, totalDeaths, time, cachedAt } = getSummarizedData(data)
   const [confirmed, recovered, deaths] = [totalConfirmed, totalRecovered, totalDeaths].map(toLocaleString)
-  const lastUpdated = time ? new Date(time) : 'showing cached data'
+  const lastUpdated = time ? new Date(time) : new Date(cachedAt)
 
   return (
     <Wrapper>
@@ -105,7 +108,13 @@ const Summary = ({ data = [] }) => {
         </Card>
       </Flex>
       <NoteWrapper>
-        <p><small>Updated on: {lastUpdated.toString()}</small></p>
+        <p>
+          <small>
+            {!!time && (<span>Updated on:</span>)}
+            {!!cachedAt && (<span>Showing cached data from</span>)}
+            <span> {lastUpdated.toString()}</span>
+          </small>
+        </p>
       </NoteWrapper>
     </Wrapper>
   )
