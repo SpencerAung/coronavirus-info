@@ -66,36 +66,38 @@ const StatusTable = () => {
 
   return (
     <div>
-      <Summary numberOfCountries={infectedCountries} totalRecovered={totalRecovered} totalConfirmed={totalConfirmed} totalDeaths={totalDeaths} />
-      <TableWrapper>
-        <p><small>Updated on: {lastUpdated.toString()}</small></p>
-        <Table>
-          <thead>
-            <tr>
-              <th>Country</th>
-              <th>Confirmed</th>
-              <th>Recovered</th>
-              <th>Deaths</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fetchedData
-              .map(({ country, confirmed, recovered, deaths }) => (
-                <tr key={country}>
-                  <td>{country}</td>
-                  <td className={!confirmed && 'zero-case'}>{toLocaleString(confirmed)}</td>
-                  <td className={!recovered && 'zero-case'}>{toLocaleString(recovered)}</td>
-                  <td className={!deaths && 'zero-case'}>{toLocaleString(deaths)}</td>
-                </tr>
-              ))}
-          </tbody>
-        </Table>
-        <p>
-          <small>
+      {fetchedData.length > 0 && <Summary numberOfCountries={infectedCountries} totalRecovered={totalRecovered} totalConfirmed={totalConfirmed} totalDeaths={totalDeaths} />}
+      {fetchedData.length > 0 && (
+        <TableWrapper>
+          <p><small>Updated on: {lastUpdated.toString()}</small></p>
+          <Table>
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Confirmed</th>
+                <th>Recovered</th>
+                <th>Deaths</th>
+              </tr>
+            </thead>
+            <tbody>
+              {fetchedData
+                .map(({ country, confirmed, recovered, deaths }) => (
+                  <tr key={country}>
+                    <td>{country}</td>
+                    <td className={!confirmed && 'zero-case'}>{toLocaleString(confirmed)}</td>
+                    <td className={!recovered && 'zero-case'}>{toLocaleString(recovered)}</td>
+                    <td className={!deaths && 'zero-case'}>{toLocaleString(deaths)}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
+          <p>
+            <small>
         Data source: <a href='https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#' target='_blank' rel='noreferrer nofollow noopener'>Novel Coronavirus (2019-nCoV) Cases, provided by JHU CSSE</a>
-          </small>
-        </p>
-      </TableWrapper>
+            </small>
+          </p>
+        </TableWrapper>
+      )}
     </div>
   )
 }
