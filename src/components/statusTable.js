@@ -52,7 +52,11 @@ const StatusTable = () => {
     acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
     acc.totalDeaths = acc.totalDeaths + cur.deaths || cur.deaths
     acc.totalRecovered = acc.totalRecovered + cur.recovered || cur.recovered
-    acc.time = cur.lastUpdate
+    if (acc.time) {
+      acc.time = acc.time > cur.lastUpdate ? acc.time : cur.lastUpdate
+    } else {
+      acc.time = cur.lastUpdate
+    }
 
     return acc
   }, {})
