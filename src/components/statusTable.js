@@ -37,6 +37,7 @@ const Table = styled.table`
   th {
     background-color: #d1d1e9;
     font-weight: 200;
+    font-size: 12rem;
   }
 
   td.zero-case {
