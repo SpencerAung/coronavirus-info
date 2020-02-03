@@ -42,12 +42,20 @@ const Card = styled.div`
 
   .number {
     font-size: 40rem;
-    color: ${(props) => props.color};
+  }
+
+  .info {
+    color: ${props => props.theme.colors.black};
+  }
+
+  .danger {
+    color: ${props => props.theme.colors.red};
+  }
+
+  .highlight {
+    color: ${props => props.theme.colors.green};
   }
 `
-const infoColor = '#2b2c34'
-const dangerColor = '#e45858'
-const highlightColor = '#2cb67d'
 
 const getSummarizedData = (data = []) => data.reduce((acc, cur) => {
   acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
@@ -77,23 +85,23 @@ const Summary = ({ data = [] }) => {
     <Wrapper>
       <h1 style={{ textAlign: 'center' }}>Infection Status</h1>
       <Flex>
-        <Card color={infoColor}>
+        <Card>
           <div className='label'>Infected Countries</div>
-          <div className='number'>{countries}</div>
+          <div className='number info'>{countries}</div>
         </Card>
-        <Card color={infoColor}>
+        <Card>
           <div className='label'>Total Confirmed</div>
-          <div className='number'>{confirmed}</div>
+          <div className='number info'>{confirmed}</div>
         </Card>
       </Flex>
       <Flex>
-        <Card color={highlightColor}>
+        <Card>
           <div className='label'>Total Recovered</div>
-          <div className='number'>{recovered}</div>
+          <div className='number highlight'>{recovered}</div>
         </Card>
-        <Card color={dangerColor}>
+        <Card>
           <div className='label'>Total Deaths</div>
-          <div className='number'>{deaths}</div>
+          <div className='number danger'>{deaths}</div>
         </Card>
       </Flex>
       <NoteWrapper>
