@@ -51,28 +51,12 @@ const StatusTable = () => {
   const externalData = useApiData()
   const cachedData = useStatus()
   const fetchedData = externalData.length ? externalData : cachedData
-  const infectedCountries = fetchedData.length
-  const { totalRecovered, totalConfirmed, totalDeaths, time } = fetchedData.reduce((acc, cur) => {
-    acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
-    acc.totalDeaths = acc.totalDeaths + cur.deaths || cur.deaths
-    acc.totalRecovered = acc.totalRecovered + cur.recovered || cur.recovered
-    if (acc.time) {
-      acc.time = acc.time > cur.lastUpdate ? acc.time : cur.lastUpdate
-    } else {
-      acc.time = cur.lastUpdate
-    }
-
-    return acc
-  }, {})
-
-  const lastUpdated = time ? new Date(time) : 'showing cached data'
 
   return (
     <div>
-      {fetchedData.length > 0 && <Summary numberOfCountries={infectedCountries} totalRecovered={totalRecovered} totalConfirmed={totalConfirmed} totalDeaths={totalDeaths} />}
+      <Summary data={fetchedData} />
       {fetchedData.length > 0 && (
         <TableWrapper>
-          <p><small>Updated on: {lastUpdated.toString()}</small></p>
           <Table>
             <thead>
               <tr>

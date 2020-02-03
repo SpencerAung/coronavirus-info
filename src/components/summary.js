@@ -12,6 +12,16 @@ const Wrapper = styled.div`
     max-width: 100%;
   }
 `
+
+const NoteWrapper = styled.div`
+  width: 450px;
+  margin: 0 auto;
+
+  @media (max-width: 420px) {
+    width: 100%;
+  }
+`
+
 const Flex = styled.div`
   display: flex;
   justify-content: center;
@@ -39,11 +49,33 @@ const infoColor = '#2b2c34'
 const dangerColor = '#e45858'
 const highlightColor = '#2cb67d'
 
-const Summary = ({ numberOfCountries, totalConfirmed, totalRecovered, totalDeaths }) => {
-  const [countries, confirmed, recovered, deaths] = [numberOfCountries, totalConfirmed, totalRecovered, totalDeaths].map(toLocaleString)
+const getSummarizedData = (data = []) => data.reduce((acc, cur) => {
+  acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
+  acc.totalDeaths = acc.totalDeaths + cur.deaths || cur.deaths
+  acc.totalRecovered = acc.totalRecovered + cur.recovered || cur.recovered
+
+  if (acc.time) {
+    acc.time = acc.time > cur.lastUpdate ? acc.time : cur.lastUpdate
+  } else {
+    acc.time = cur.lastUpdate
+  }
+
+  return acc
+}, {})
+
+const Summary = ({ data = [] }) => {
+  if (!data || data.length === 0) {
+    return null
+  }
+
+  const countries = data.length
+  const { totalRecovered, totalConfirmed, totalDeaths, time } = getSummarizedData(data)
+  const [confirmed, recovered, deaths] = [totalConfirmed, totalRecovered, totalDeaths].map(toLocaleString)
+  const lastUpdated = time ? new Date(time) : 'showing cached data'
 
   return (
     <Wrapper>
+      <h1 style={{ textAlign: 'center' }}>Infection Status</h1>
       <Flex>
         <Card color={infoColor}>
           <div className='label'>Infected Countries</div>
@@ -64,6 +96,9 @@ const Summary = ({ numberOfCountries, totalConfirmed, totalRecovered, totalDeath
           <div className='number'>{deaths}</div>
         </Card>
       </Flex>
+      <NoteWrapper>
+        <p><small>Updated on: {lastUpdated.toString()}</small></p>
+      </NoteWrapper>
     </Wrapper>
   )
 }
