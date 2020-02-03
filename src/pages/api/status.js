@@ -1,4 +1,5 @@
 const Airtable = require('airtable')
+
 Airtable.configure({
   endpointUrl: 'https://api.airtable.com',
   apiKey: process.env.AIRTABLE_API_KEY
@@ -25,7 +26,6 @@ export default async (req, res) => {
   if (req.method === 'GET') {
     try {
       const statuses = await fetchStatus()
-
       res.send(getFields(statuses))
     } catch (e) {
       console.error(e)

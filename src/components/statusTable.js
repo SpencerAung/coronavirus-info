@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
+import useStatus from '../hooks/useStatus'
 import { toLocaleString } from '../helpers'
 
 const TableWrapper = styled.div`
@@ -47,7 +48,9 @@ const Table = styled.table`
 `
 
 const StatusTable = () => {
-  const fetchedData = useApiData()
+  const externalData = useApiData()
+  const cachedData = useStatus()
+  const fetchedData = externalData.length ? externalData : cachedData
   const infectedCountries = fetchedData.length
   const { totalRecovered, totalConfirmed, totalDeaths, time } = fetchedData.reduce((acc, cur) => {
     acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
@@ -62,7 +65,7 @@ const StatusTable = () => {
     return acc
   }, {})
 
-  const lastUpdated = new Date(time)
+  const lastUpdated = time ? new Date(time) : 'showing cached data'
 
   return (
     <div>
