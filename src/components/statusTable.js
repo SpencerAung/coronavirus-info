@@ -66,7 +66,7 @@ const StatusTable = () => {
 
   return (
     <div>
-      <Summary numberOfCountries={infectedCountries} totalRecovered={totalRecovered} totalConfirmed={totalConfirmed} totalDeaths={totalDeaths} />
+      {fetchedData.length > 0 && <Summary numberOfCountries={infectedCountries} totalRecovered={totalRecovered} totalConfirmed={totalConfirmed} totalDeaths={totalDeaths} />}
       {fetchedData.length > 0 && (
         <TableWrapper>
           <p><small>Updated on: {lastUpdated.toString()}</small></p>
