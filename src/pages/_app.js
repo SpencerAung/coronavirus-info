@@ -16,8 +16,10 @@ const Wrapper = styled.div`
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 20rem;
   }
+`
+const Content = styled.div`
+  padding: 20rem;
 `
 
 function MyApp ({ Component, pageProps }) {
@@ -25,7 +27,9 @@ function MyApp ({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <Wrapper>
         <NavBar />
-        <Component {...pageProps} />
+        <Content>
+          <Component {...pageProps} />
+        </Content>
         <footer style={{ textAlign: 'center', margin: '50rem' }}>
           <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'>github</a>
         </footer>
