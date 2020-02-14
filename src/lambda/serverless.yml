@@ -46,10 +46,22 @@ functions:
   create:
     handler: historic-data/create.create
     events:
+      - schedule: cron(55 23 * * ? *)
       - http:
           path: historic-data
           method: post
           cors: true
+  get:
+    handler: historic-data/get.get
+    events:
+      - http:
+          path: historic-data
+          method: get
+          cors: true
+          request:
+            template:
+              application/json: '{ date: "$input.params(''date'')" }'
+
 resources:
   Resources:
     CoronavirusHistoricalDataDynamoDbTable:

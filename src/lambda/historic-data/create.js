@@ -20,9 +20,22 @@ const parseData = (data = []) => data.map(({ attributes: country }) => {
   }
 })
 
+const getDateString = (date) => {
+  let month = date.getMonth() + 1
+  month = month > 9 ? month : `0${month}`
+
+  let day = date.getDate()
+  day = day > 9 ? day : `0${day}`
+
+  return `${date.getFullYear()}-${month}-${day}`
+}
+
 module.exports.create = async (event, context) => {
   try {
-    const timestamp = new Date().getTime()
+    const today = new Date()
+    const timestamp = today.getTime()
+    const createdDate = getDateString(today)
+
     const fetchedData = await fetchData()
 
     const params = {
@@ -30,7 +43,8 @@ module.exports.create = async (event, context) => {
       Item: {
         id: uuid.v1(),
         data: fetchedData,
-        createdAt: timestamp
+        createdAt: timestamp,
+        createdDate
       }
     }
 
