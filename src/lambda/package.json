@@ -1,0 +1,10 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "devDependencies": {
+    "serverless": "^1.63.0"
+  },
+  "scripts": {
+    "deploy": "serverless deploy"
+  }
+}

@@ -1,7 +1,7 @@
 service: coronavirus-historical-data
-
 app: coronavirus-info
 org: spenceraung
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -11,6 +11,8 @@ provider:
 functions:
   hello:
     handler: handler.hello
-    events:
+    # events:
       # Invoke Lambda function every minute
-      - schedule: rate(1 minute)
+      # - schedule: rate(1 minute)
+  save:
+    handler: handler.save
