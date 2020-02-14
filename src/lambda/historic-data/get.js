@@ -6,12 +6,13 @@ module.exports.get = async (event, context) => {
     const params = {
       TableName: process.env.DYNAMODB_TABLE,
       FilterExpression: 'createdDate = :this_date',
-      ExpressionAttributeValues: { ':this_date': qs.date },
-      Limit: 1,
-      ScanIndexForward: false
+      ExpressionAttributeValues: {
+        ':this_date': qs.date
+      },
+      Limit: 1
     }
 
-    const data = await dynamoDb.query(params).promise()
+    const data = await dynamoDb.scan(params).promise()
 
     return {
       statusCode: 200,
