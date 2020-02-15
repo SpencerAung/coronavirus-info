@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { IoIosArrowRoundUp as ArrowUp } from 'react-icons/io'
 
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
@@ -29,8 +30,8 @@ const Table = styled.table`
     }
   }
 
-  th:first-child,
-  td:first-child {
+  th:first-of-type,
+  td:first-of-type {
     text-align: left;
   }
 
@@ -58,9 +59,9 @@ const renderDataRows = (data = []) => data.map(({
   return (
     <tr key={country}>
       <td>{country}</td>
-      <td className={!confirmed && 'zero-case'}>{changeInConfirmed > 0 && '+'}{toLocaleString(confirmed)}</td>
-      <td className={!recovered && 'zero-case'}>{changeInRecovered > 0 && '+'}{toLocaleString(recovered)}</td>
-      <td className={!deaths && 'zero-case'}>{changeInDeaths > 0 && '+'}{toLocaleString(deaths)}</td>
+      <td className={!confirmed && 'zero-case'}>{toLocaleString(confirmed)}{changeInConfirmed > 0 && <ArrowUp />}</td>
+      <td className={!recovered && 'zero-case'}>{toLocaleString(recovered)}{changeInRecovered > 0 && <ArrowUp />}</td>
+      <td className={!deaths && 'zero-case'}>{toLocaleString(deaths)}{changeInDeaths > 0 && <ArrowUp />}</td>
     </tr>
   )
 })
