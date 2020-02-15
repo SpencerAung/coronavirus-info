@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import Router from 'next/router'
 import withGA from 'next-ga'
 import { ThemeProvider } from 'emotion-theming'
+import { FaGithub as GithubIcon, FaTwitter as TwitterIcon } from 'react-icons/fa'
 
 import NavBar from '../components/navBar'
 import '../styles/normalize.css'
@@ -21,6 +22,19 @@ const Wrapper = styled.div`
 const Content = styled.div`
   padding: 20rem;
 `
+const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    margin: 0 20rem;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+`
 
 function MyApp ({ Component, pageProps }) {
   return (
@@ -30,9 +44,10 @@ function MyApp ({ Component, pageProps }) {
         <Content>
           <Component {...pageProps} />
         </Content>
-        <footer style={{ textAlign: 'center', margin: '50rem' }}>
-          <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'>github</a>
-        </footer>
+        <Footer style={{ textAlign: 'center', margin: '50rem' }}>
+          <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'><GithubIcon /> Github</a>
+          <a href='https://twitter.com/SpencerAung' target='_blank' rel='nofollow noreferrer noopener'><TwitterIcon /> SpencerAung</a>
+        </Footer>
       </Wrapper>
     </ThemeProvider>
   )
