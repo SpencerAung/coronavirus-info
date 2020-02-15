@@ -10,7 +10,9 @@
     "deploy": "serverless deploy",
     "remove": "serverless remove",
     "deploy:prod": "serverless deploy --stage prod --region ap-northeast-1",
-    "remove:prod": "serverless remove --stage prod --region ap-northeast-1"
+    "remove:prod": "serverless remove --stage prod --region ap-northeast-1",
+    "start:offline": "serverless offline start",
+    "migrate:db": "serverless dynamodb migrate"
   },
   "dependencies": {
     "node-fetch": "^2.6.0",
