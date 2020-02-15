@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { IoIosArrowRoundUp as ArrowUp } from 'react-icons/io'
 
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
@@ -41,9 +40,29 @@ const Table = styled.table`
     font-size: 13rem;
   }
 
+  td {
+    vertical-align: top;
+  }
+
+  td.new-entry {
+    background-color: ${props => props.theme.colors.washedWhite};
+  }
+
   td.zero-case {
     color: ${props => props.theme.colors.offWhite};
     font-weight: 200;
+  }
+
+  span.change {
+    font-size: 11rem;
+  }
+
+  span.danger {
+    color: ${props => props.theme.colors.red};
+  }
+
+  span.highlight {
+    color: ${props => props.theme.colors.green};
   }
 `
 
@@ -54,14 +73,30 @@ const renderDataRows = (data = []) => data.map(({
   deaths,
   changeInConfirmed,
   changeInRecovered,
-  changeInDeaths
+  changeInDeaths,
+  previous
 }) => {
+  const confirmedTdClassName = confirmed ? '' : 'zero-case '
+  const recoveredTdClassName = recovered ? '' : 'zero-case '
+  const deathsTdClassName = deaths ? '' : 'zero-case '
+
+  const newEntryClassName = previous ? '' : 'new-entry'
+
   return (
     <tr key={country}>
-      <td>{country}</td>
-      <td className={!confirmed && 'zero-case'}>{toLocaleString(confirmed)}{changeInConfirmed > 0 && <ArrowUp />}</td>
-      <td className={!recovered && 'zero-case'}>{toLocaleString(recovered)}{changeInRecovered > 0 && <ArrowUp />}</td>
-      <td className={!deaths && 'zero-case'}>{toLocaleString(deaths)}{changeInDeaths > 0 && <ArrowUp />}</td>
+      <td className={newEntryClassName}>{country}</td>
+      <td className={confirmedTdClassName + newEntryClassName}>
+        <span>{toLocaleString(confirmed)}</span>
+        {changeInConfirmed > 0 && <><br /><span className='change danger'>+({changeInConfirmed})</span></>}
+      </td>
+      <td className={recoveredTdClassName + newEntryClassName}>
+        <span>{toLocaleString(recovered)}</span>
+        {changeInRecovered > 0 && <><br /><span className='change highlight'>+({changeInRecovered})</span></>}
+      </td>
+      <td className={deathsTdClassName + newEntryClassName}>
+        <span>{toLocaleString(deaths)}</span>
+        {changeInDeaths > 0 && <><br /><span className='change danger'>+({changeInDeaths})</span></>}
+      </td>
     </tr>
   )
 })
