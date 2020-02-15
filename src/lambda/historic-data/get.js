@@ -7,9 +7,8 @@ module.exports.get = async (event, context) => {
       TableName: process.env.DYNAMODB_TABLE,
       FilterExpression: 'createdDate = :this_date',
       ExpressionAttributeValues: {
-        ':this_date': qs.date
-      },
-      Limit: 1
+        ':this_date': qs.date || ''
+      }
     }
 
     const data = await dynamoDb.scan(params).promise()
