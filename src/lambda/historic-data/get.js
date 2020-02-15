@@ -15,6 +15,10 @@ module.exports.get = async (event, context) => {
 
     return {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
+      },
       body: JSON.stringify({ data, status: 'success' })
     }
   } catch (e) {
@@ -22,6 +26,10 @@ module.exports.get = async (event, context) => {
 
     return {
       statusCode: e.statusCode || 501,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
+      },
       body: JSON.stringify({ error: 'error' })
     }
   }

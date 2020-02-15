@@ -25,6 +25,10 @@ module.exports.create = async (event, context) => {
     const data = await dynamoDb.put(params).promise()
     const response = {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
+      },
       body: JSON.stringify({ data, status: 'success' })
     }
 
@@ -34,7 +38,10 @@ module.exports.create = async (event, context) => {
 
     return {
       statusCode: e.statusCode || 501,
-      headers: { 'Content-Type': 'text/plain' },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
+      },
       body: 'Could\'t create the historic data item.'
     }
   }
