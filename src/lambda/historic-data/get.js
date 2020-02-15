@@ -1,4 +1,4 @@
-const dynamoDb = require('./dynamodb')
+const dynamoDb = require('../dynamodb')
 
 module.exports.get = async (event, context) => {
   try {
