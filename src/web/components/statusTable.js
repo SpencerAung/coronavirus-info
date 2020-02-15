@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
-import useStatus from '../hooks/useStatus'
 import { toLocaleString } from '../helpers'
 
 const TableWrapper = styled.div`
@@ -47,10 +46,27 @@ const Table = styled.table`
   }
 `
 
+const renderDataRows = (data = []) => data.map(({
+  country,
+  confirmed,
+  recovered,
+  deaths,
+  changeInConfirmed,
+  changeInRecovered,
+  changeInDeaths
+}) => {
+  return (
+    <tr key={country}>
+      <td>{country}</td>
+      <td className={!confirmed && 'zero-case'}>{changeInConfirmed > 0 && '+'}{toLocaleString(confirmed)}</td>
+      <td className={!recovered && 'zero-case'}>{changeInRecovered > 0 && '+'}{toLocaleString(recovered)}</td>
+      <td className={!deaths && 'zero-case'}>{changeInDeaths > 0 && '+'}{toLocaleString(deaths)}</td>
+    </tr>
+  )
+})
+
 const StatusTable = () => {
-  const externalData = useApiData()
-  const cachedData = useStatus()
-  const fetchedData = externalData.length ? externalData : cachedData
+  const fetchedData = useApiData()
 
   return (
     <div>
@@ -67,15 +83,7 @@ const StatusTable = () => {
               </tr>
             </thead>
             <tbody>
-              {fetchedData
-                .map(({ country, confirmed, recovered, deaths }) => (
-                  <tr key={country}>
-                    <td>{country}</td>
-                    <td className={!confirmed && 'zero-case'}>{toLocaleString(confirmed)}</td>
-                    <td className={!recovered && 'zero-case'}>{toLocaleString(recovered)}</td>
-                    <td className={!deaths && 'zero-case'}>{toLocaleString(deaths)}</td>
-                  </tr>
-                ))}
+              {renderDataRows(fetchedData)}
             </tbody>
           </Table>
           <p>
