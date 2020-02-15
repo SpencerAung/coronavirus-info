@@ -1,0 +1,20 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "devDependencies": {
+    "serverless": "^1.63.0",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^5.12.1"
+  },
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "deploy:prod": "serverless deploy --stage prod --region ap-northeast-1",
+    "remove:prod": "serverless remove --stage prod --region ap-northeast-1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "serverless-dynamodb-local": "^0.2.39",
+    "uuid": "^3.4.0"
+  }
+}

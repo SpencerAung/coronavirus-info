@@ -1,0 +1,88 @@
+service: coronavirus-historic-data
+app: coronavirus-info
+org: spenceraung
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  dynamodb:
+    stages:
+      - ${self:provider.stage}
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    migration:
+      dir: offline/migrations
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-1
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    JHU_API_ENDPOINT: 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/2/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=Confirmed%20desc%2CCountry_Region%20asc&outSR=102100&resultOffset=0&resultRecordCount=100&cacheHint=true'
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}/index/*"
+
+
+functions:
+  historic-create:
+    handler: historic-data/create.create
+    events:
+      - schedule: cron(55 23 * * ? *)
+      - http:
+          path: historic-data
+          method: post
+          cors: true
+  historic-get:
+    handler: historic-data/get.get
+    events:
+      - http:
+          path: historic-data
+          method: get
+          cors: true
+          request:
+            template:
+              application/json: '{ date: "$input.params(''date'')" }'
+  coronavirus-get:
+    handler: coronavirus-data/get.get
+    events:
+      - http:
+          path: coronavirus-data
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    CoronavirusHistoricalDataDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
