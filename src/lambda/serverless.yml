@@ -46,10 +46,6 @@ functions:
     handler: historic-data/create.create
     events:
       - schedule: cron(55 23 * * ? *)
-      - http:
-          path: historic-data
-          method: post
-          cors: true
   historic-get:
     handler: historic-data/get.get
     events:
