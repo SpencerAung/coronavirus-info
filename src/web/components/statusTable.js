@@ -80,20 +80,18 @@ const renderDataRows = (data = []) => data.map(({
   const recoveredTdClassName = recovered ? '' : 'zero-case '
   const deathsTdClassName = deaths ? '' : 'zero-case '
 
-  const newEntryClassName = previous ? '' : 'new-entry'
-
   return (
     <tr key={country}>
-      <td className={newEntryClassName}>{country}</td>
-      <td className={confirmedTdClassName + newEntryClassName}>
+      <td>{country} {!previous && <small><span className='danger'>new</span></small>}</td>
+      <td className={confirmedTdClassName}>
         <span>{toLocaleString(confirmed)}</span>
         {changeInConfirmed > 0 && <><br /><span className='change danger'>+({changeInConfirmed})</span></>}
       </td>
-      <td className={recoveredTdClassName + newEntryClassName}>
+      <td className={recoveredTdClassName}>
         <span>{toLocaleString(recovered)}</span>
         {changeInRecovered > 0 && <><br /><span className='change highlight'>+({changeInRecovered})</span></>}
       </td>
-      <td className={deathsTdClassName + newEntryClassName}>
+      <td className={deathsTdClassName}>
         <span>{toLocaleString(deaths)}</span>
         {changeInDeaths > 0 && <><br /><span className='change danger'>+({changeInDeaths})</span></>}
       </td>
