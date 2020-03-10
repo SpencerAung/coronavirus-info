@@ -66,6 +66,7 @@ const Table = styled.table`
   }
 `
 
+const tempCountries = new Set(['Lithuania', 'Moldova', 'Monaco', 'Nepal', 'Paraguay', 'Saint Barthelemy', 'Serbia', 'Sri Lanka', 'Togo', 'Ukraine', 'Vatican City'])
 const renderDataRows = (data = []) => data.map(({
   country,
   confirmed,
@@ -79,21 +80,21 @@ const renderDataRows = (data = []) => data.map(({
   const confirmedTdClassName = confirmed ? '' : 'zero-case '
   const recoveredTdClassName = recovered ? '' : 'zero-case '
   const deathsTdClassName = deaths ? '' : 'zero-case '
-
+  const isAlreadyInfected = tempCountries.has(country)
   return (
     <tr key={country}>
-      <td>{country} {!previous && <small><span className='danger'>new</span></small>}</td>
+      <td>{country} {!previous && !isAlreadyInfected && <small><span className='danger'>new</span></small>}</td>
       <td className={confirmedTdClassName}>
         <span>{toLocaleString(confirmed)}</span>
-        {changeInConfirmed > 0 && <><br /><span className='change danger'>+({changeInConfirmed})</span></>}
+        {changeInConfirmed > 0 && !isAlreadyInfected && <><br /><span className='change danger'>+({changeInConfirmed})</span></>}
       </td>
       <td className={recoveredTdClassName}>
         <span>{toLocaleString(recovered)}</span>
-        {changeInRecovered > 0 && <><br /><span className='change highlight'>+({changeInRecovered})</span></>}
+        {changeInRecovered > 0 && !isAlreadyInfected && <><br /><span className='change highlight'>+({changeInRecovered})</span></>}
       </td>
       <td className={deathsTdClassName}>
         <span>{toLocaleString(deaths)}</span>
-        {changeInDeaths > 0 && <><br /><span className='change danger'>+({changeInDeaths})</span></>}
+        {changeInDeaths > 0 && !isAlreadyInfected && <><br /><span className='change danger'>+({changeInDeaths})</span></>}
       </td>
     </tr>
   )
