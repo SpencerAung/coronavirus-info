@@ -36,30 +36,32 @@ module.exports.get = async (event, context) => {
       getHistoricDataMap()
     ])
 
-    const parsedData = fetchedData.map((item) => {
-      const previous = historicDataMap[item.country]
-      let changeInConfirmed = item.confirmed
-      let changeInRecovered = item.recovered
-      let changeInDeaths = item.deaths
-      let confirmedRate = 100
+    const parsedData = fetchedData
+      .filter(item => item.confirmed > 0)
+      .map((item) => {
+        const previous = historicDataMap[item.country]
+        let changeInConfirmed = item.confirmed
+        let changeInRecovered = item.recovered
+        let changeInDeaths = item.deaths
+        let confirmedRate = 100
 
-      if (previous) {
-        changeInConfirmed = item.confirmed - previous.confirmed
-        changeInRecovered = item.recovered - previous.recovered
-        changeInDeaths = item.deaths - previous.deaths
+        if (previous) {
+          changeInConfirmed = item.confirmed - previous.confirmed
+          changeInRecovered = item.recovered - previous.recovered
+          changeInDeaths = item.deaths - previous.deaths
 
-        confirmedRate = ((item.confirmed - previous.confirmed) / previous.confirmed) * 100
-      }
+          confirmedRate = ((item.confirmed - previous.confirmed) / previous.confirmed) * 100
+        }
 
-      return {
-        ...item,
-        previous,
-        changeInConfirmed,
-        changeInRecovered,
-        changeInDeaths,
-        confirmedRate
-      }
-    })
+        return {
+          ...item,
+          previous,
+          changeInConfirmed,
+          changeInRecovered,
+          changeInDeaths,
+          confirmedRate
+        }
+      })
 
     return {
       statusCode: 200,
