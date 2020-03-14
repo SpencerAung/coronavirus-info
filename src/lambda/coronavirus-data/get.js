@@ -37,7 +37,7 @@ module.exports.get = async (event, context) => {
     ])
 
     const parsedData = fetchedData
-      .filter(item => item.confirmed > 0 || item.country !== 'Fench Guiana')
+      .filter(item => item.confirmed > 0 && item.country !== 'Fench Guiana')
       .map((item) => {
         const previous = historicDataMap[item.country]
         let changeInConfirmed = item.confirmed
