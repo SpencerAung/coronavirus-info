@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { useState } from 'react'
 
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
@@ -65,6 +66,11 @@ const Table = styled.table`
     color: ${props => props.theme.colors.green};
   }
 `
+const SearchInput = styled.input`
+  width: 100%;
+  margin-bottom: 10rem;
+  padding: 8rem;
+`
 
 const renderDataRows = (data = []) => data.map(({
   country,
@@ -101,12 +107,15 @@ const renderDataRows = (data = []) => data.map(({
 
 const StatusTable = () => {
   const fetchedData = useApiData()
+  const [keyword, setKeyword] = useState('')
+  const records = fetchedData.filter(record => record.country.toLowerCase().startsWith(keyword.toLowerCase()))
 
   return (
     <div>
       <Summary data={fetchedData} />
       {fetchedData.length > 0 && (
         <TableWrapper>
+          <SearchInput type='text' onChange={e => setKeyword(e.target.value)} placeholder='Search country' />
           <Table>
             <thead>
               <tr>
@@ -117,7 +126,7 @@ const StatusTable = () => {
               </tr>
             </thead>
             <tbody>
-              {renderDataRows(fetchedData)}
+              {renderDataRows(records)}
             </tbody>
           </Table>
           <p>
