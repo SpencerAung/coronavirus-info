@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   }
 `
 const Content = styled.div`
-  padding: 20rem;
+  padding: 5rem;
 `
 const Footer = styled.footer`
   display: flex;
