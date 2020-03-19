@@ -26,15 +26,15 @@ const DataRows = ({ data = [], bookmarks, onBookmarksChange }) => {
         <td className='country-col'>{country} {!previous && <small><span className='danger'>new</span></small>}</td>
         <td className={confirmedTdClassName}>
           <span>{toLocaleString(confirmed)}</span>
-          {changeInConfirmed > 0 && <><br /><span className='change danger'>+({changeInConfirmed})</span></>}
+          {changeInConfirmed > 0 && <><br /><span className='change danger'>+({toLocaleString(changeInConfirmed)})</span></>}
         </td>
         <td className={recoveredTdClassName}>
           <span>{toLocaleString(recovered)}</span>
-          {changeInRecovered > 0 && <><br /><span className='change highlight'>+({changeInRecovered})</span></>}
+          {changeInRecovered > 0 && <><br /><span className='change highlight'>+({toLocaleString(changeInRecovered)})</span></>}
         </td>
         <td className={deathsTdClassName}>
           <span>{toLocaleString(deaths)}</span>
-          {changeInDeaths > 0 && <><br /><span className='change danger'>+({changeInDeaths})</span></>}
+          {changeInDeaths > 0 && <><br /><span className='change danger'>+({toLocaleString(changeInDeaths)})</span></>}
         </td>
         <td className='action-col'><BookmarkButton onClick={() => onBookmarksChange(country)} active={bookmarks[country]}><AddIcon /></BookmarkButton></td>
       </tr>
