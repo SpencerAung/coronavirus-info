@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
 import { toLocaleString } from '../helpers'
-import { HeaderTable, SearchInput, DataTable, TableWrapper, BookmarkButton, BookmarkSwitchButton } from './statusTable.style'
+import { HeaderTable, SearchInput, DataTable, TableWrapper, BookmarkButton, BookmarkSwitchButton, SearchInputWrapper } from './statusTable.style'
 import { IoIosBookmark as AddIcon } from 'react-icons/io'
 
 const DataRows = ({ data = [], bookmarks, onBookmarksChange }) => {
@@ -78,7 +78,9 @@ const StatusTable = () => {
       <Summary data={fetchedData} />
       {fetchedData.length > 0 && (
         <TableWrapper>
-          <SearchInput type='text' onChange={e => setKeyword(e.target.value)} placeholder='Search country' />
+          <SearchInputWrapper>
+            <SearchInput type='text' onChange={e => setKeyword(e.target.value)} placeholder='Search country' />
+          </SearchInputWrapper>
           <HeaderTable>
             <thead>
               <tr>

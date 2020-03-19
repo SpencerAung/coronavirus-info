@@ -113,9 +113,43 @@ export const DataTable = styled(HeaderTable)`
   }
 `
 
+export const SearchInputWrapper = styled.div`
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10rem;
+  position: relative;
+
+  input[type=text] {
+    paddding-right: 50px;
+  }
+
+  &:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 20px;
+    top: 9px;
+    border: 1px solid ${props => props.theme.colors.lightPurple};
+    background-color: transparent;
+    border-radius: 50%;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 26px;
+    width: 12px;
+    height: 1px;
+    transform: rotateZ(45deg);
+    background-color: ${props => props.theme.colors.lightPurple};
+  }
+`
+
 export const SearchInput = styled.input`
   width: 100%;
-  margin-bottom: 10rem;
+  height: 100%;
   padding: 8rem;
   border: 1px solid ${props => props.theme.colors.lightPurple};
 `
