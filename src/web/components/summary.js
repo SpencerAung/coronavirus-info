@@ -29,7 +29,7 @@ const Summary = ({ data = [] }) => {
 
   return (
     <Wrapper>
-      <h1 style={{ textAlign: 'center' }}>Infection Status</h1>
+      <h1 style={{ textAlign: 'center' }}>Global Status</h1>
       <Flex>
         <Card>
           <div className='label'>Infected Countries</div>
