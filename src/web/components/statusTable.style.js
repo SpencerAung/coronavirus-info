@@ -171,3 +171,9 @@ export const BookmarkSwitchButton = styled(BookmarkButton)`
   color: #fff;
   opacity: ${props => props.active ? 1 : 0.5};
 `
+
+export const SpinnerWrapper = styled.div`
+  width: 100px;
+  margin: 100rem auto;
+  text-align: center;
+`
