@@ -62,6 +62,7 @@ button {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
+  border: 1px solid #6246ea;
   background-color: #6246ea;
   opacity: 0.4;
 }
