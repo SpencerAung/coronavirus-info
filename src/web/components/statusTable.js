@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { IoIosBookmark as AddIcon } from 'react-icons/io'
-import BeatLoader from 'react-spinners/BeatLoader'
 
-import theme from '../theme'
 import Summary from './summary'
 import useApiData from '../hooks/useApiData'
 import { toLocaleString } from '../helpers'
-import { SpinnerWrapper, HeaderTable, SearchInput, DataTable, TableWrapper, BookmarkButton, BookmarkSwitchButton, SearchInputWrapper } from './statusTable.style'
+import { HeaderTable, SearchInput, DataTable, TableWrapper, BookmarkButton, BookmarkSwitchButton, SearchInputWrapper } from './statusTable.style'
+import Spinner from './spinner'
 
 const DataRows = ({ data = [], bookmarks, onBookmarksChange }) => {
   return data.map(({
@@ -73,13 +72,7 @@ const StatusTable = () => {
   }, [])
 
   if (!fetchedData.length) {
-    return (
-      <SpinnerWrapper>
-        <BeatLoader
-          color={theme.colors.purple}
-        />
-      </SpinnerWrapper>
-    )
+    return <Spinner />
   }
 
   const visibleData = isBookmarkOn ? fetchedData.filter(record => bookmarks[record.country] || false) : fetchedData

@@ -1,61 +1,7 @@
-import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
 import { toLocaleString } from '../helpers'
-
-const Wrapper = styled.div`
- width: 500px;
- margin: 0 auto;
-
-  @media (max-width: 420px) {
-    width: 100%;
-    max-width: 355px;
-  }
-`
-
-const NoteWrapper = styled.div`
-  width: 450px;
-  margin: 0 auto;
-
-  @media (max-width: 420px) {
-    width: 100%;
-  }
-`
-
-const Flex = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const Card = styled.div`
-  width: 200px;
-  padding: 20rem;
-  text-align: center;
-
-  .label {
-    font-size: 14rem;
-    font-weight: 200;
-    margin-bottom: 8rem;
-    color: #72757e;
-  }
-
-  .number {
-    font-size: 35rem;
-  }
-
-  .info {
-    color: ${props => props.theme.colors.black};
-  }
-
-  .danger {
-    color: ${props => props.theme.colors.red};
-  }
-
-  .highlight {
-    color: ${props => props.theme.colors.green};
-  }
-`
+import { Wrapper, NoteWrapper, Flex, Card } from './summary.style'
 
 const getSummarizedData = (data = []) => data.reduce((acc, cur) => {
   acc.totalConfirmed = acc.totalConfirmed + cur.confirmed || cur.confirmed
