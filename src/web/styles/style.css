@@ -51,8 +51,6 @@ button {
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  padding: 0;
-  margin: 0;
   width: 3px;
 }
 
@@ -65,4 +63,5 @@ button {
   border: 1px solid #6246ea;
   background-color: #6246ea;
   opacity: 0.4;
+  box-shadow: rgba(255,255,255,0.3) 0 0 0 1px;
 }

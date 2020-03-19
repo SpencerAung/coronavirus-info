@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
 
 const StyledNav = styled.nav`
-  padding: 20px;
+  padding: 10rem;
   display: grid;
   grid-template-columns: 3fr 7fr;
   grid-column-gap: 10px;

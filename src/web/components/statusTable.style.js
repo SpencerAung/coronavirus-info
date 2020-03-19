@@ -6,11 +6,13 @@ export const TableWrapper = styled.div`
 
   @media (max-width: 420px) {
     width: 100%;
+    max-width: 355px;
   }
 `
 
 export const HeaderTable = styled.table`
   width: 100%;
+  margin: auto;
   border: none;
   outline: none;
   border-collapse: collapse;
@@ -34,8 +36,8 @@ export const HeaderTable = styled.table`
     width: 202px;
 
     @media (max-width: 420px) {
-      width: 130px;
-      max-width: 130px;
+      width: 110px;
+      max-width: 110px;
     }
   }
 
@@ -103,6 +105,7 @@ export const DataTable = styled(HeaderTable)`
     display: block;
     max-height: 500px;
     overflow-y: scroll;
+    position: relative;
   }
 
   td.action-col {

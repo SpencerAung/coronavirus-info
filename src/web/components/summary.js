@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
   @media (max-width: 420px) {
     width: 100%;
-    max-width: 100%;
+    max-width: 355px;
   }
 `
 
@@ -41,7 +41,7 @@ const Card = styled.div`
   }
 
   .number {
-    font-size: 40rem;
+    font-size: 35rem;
   }
 
   .info {
