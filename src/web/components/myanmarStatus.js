@@ -54,7 +54,9 @@ const MyanmarStatus = () => {
         <p>
           <small>
             <span>Data source: </span>
-            <a href='https://doph.maps.arcgis.com/apps/opsdashboard/index.html#/f8fb4ccc3d2d42c7ab0590dbb3fc26b8' target='_blank' rel='nofollow noopener noreferrer'>Coronavirus Disease 2019 (COVID-19) Surveillance Dashboard (Myanmar)</a>
+            <a href='https://doph.maps.arcgis.com/apps/opsdashboard/index.html#/f8fb4ccc3d2d42c7ab0590dbb3fc26b8' target='_blank' rel='nofollow noopener noreferrer'>Coronavirus Disease 2019 (COVID-19) Surveillance Dashboard (Myanmar)</a>{', '}
+            <a href='https://www.facebook.com/MinistryOfHealthAndSportsMyanmar/' target='_blank' rel='nofollow noopener noreferrer'>Ministry of Health and Sports, Myanmar</a>
+
           </small>
         </p>
       </NoteWrapper>
