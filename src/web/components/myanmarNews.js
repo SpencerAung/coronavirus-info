@@ -6,6 +6,7 @@ const MyanmarNews = () => {
 
   return (
     <div>
+      <h1 className='mm-font'>သတင်း</h1>
       {!news.length && <p>Fetching Myanmar news...</p>}
       {news.map(item => <NewsItem titleClassName='mm-font' key={item.url} {...item} />)}
     </div>

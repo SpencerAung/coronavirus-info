@@ -70,7 +70,7 @@ const NavBar = () => {
       </div>
       <div className='nav-g'>
         <Link href='/myanmar-news'>
-          <a className='mm-font'>မြန်မာသတင်း</a>
+          <a className='mm-font'>မြန်မာ</a>
         </Link>
       </div>
     </StyledNav>

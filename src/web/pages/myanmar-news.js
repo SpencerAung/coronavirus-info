@@ -7,7 +7,6 @@ const MyanmarNewsPage = () => {
     <div>
       <MyanmarStatus />
       <PatientPath />
-      <h1 className='mm-font'>မြန်မာသတင်း</h1>
       <MyanmarNews />
     </div>
   )
