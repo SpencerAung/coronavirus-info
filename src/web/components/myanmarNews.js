@@ -1,8 +1,8 @@
 import NewsItem from './newsItem'
-import useMyanmarNews from '../hooks/useMyanmarNews'
+import useApi from '../hooks/useApi'
 
 const MyanmarNews = () => {
-  const news = useMyanmarNews()
+  const news = useApi('/api/myanmar-news', [])
 
   return (
     <div>

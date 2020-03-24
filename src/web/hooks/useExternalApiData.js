@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import fetch from 'node-fetch'
 
-export default function useApiData () {
+export default function useExternalApiData () {
   const [data, updateData] = useState([])
 
   useEffect(() => {

@@ -1,9 +1,9 @@
-import useMyanmarStatus from '../hooks/useMyanmarStatus'
+import useApi from '../hooks/useApi'
 import { Wrapper, NoteWrapper, Flex, Card } from './summary.style'
 import Spinner from './spinner'
 
 const MyanmarStatus = () => {
-  const [data] = useMyanmarStatus()
+  const [data] = useApi('/api/myanmar-status', [])
 
   if (!data) {
     return <Spinner />

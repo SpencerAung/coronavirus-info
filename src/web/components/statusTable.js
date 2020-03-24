@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { IoIosBookmark as AddIcon } from 'react-icons/io'
 
 import Summary from './summary'
-import useApiData from '../hooks/useApiData'
+import useExternalApiData from '../hooks/useExternalApiData'
 import { toLocaleString } from '../helpers'
 import { HeaderTable, SearchInput, DataTable, TableWrapper, BookmarkButton, BookmarkSwitchButton, SearchInputWrapper } from './statusTable.style'
 import Spinner from './spinner'
@@ -48,7 +48,7 @@ const saveBookmarksToLocalStorage = (bookmarks) => {
 }
 
 const StatusTable = () => {
-  const fetchedData = useApiData()
+  const fetchedData = useExternalApiData(process.env.API_ENDPOINT, [])
   const [bookmarks, setBookmarks] = useState({})
   const [isBookmarkOn, turnOnBookmark] = useState(false)
   const [keyword, setKeyword] = useState('')
