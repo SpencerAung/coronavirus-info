@@ -10,7 +10,7 @@ const fetchMyanmarNews = () => {
   return new Promise((resolve, reject) => {
     base('MyanmarNews').select({
       view: 'Grid view',
-      maxRecords: 20
+      maxRecords: 30
     }).firstPage(function (err, records) {
       if (err) {
         reject(err)
