@@ -21,6 +21,7 @@ const StyledTable = styled.table`
     font-size: 14rem;
     font-weight: 200;
     color: #72757e;
+    min-width: 112px;
   }
 
   td {
