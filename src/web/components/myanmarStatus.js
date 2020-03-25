@@ -1,6 +1,47 @@
+import styled from '@emotion/styled'
+
 import useApi from '../hooks/useApi'
-import { Wrapper, NoteWrapper, Flex, Card } from './summary.style'
+import { Wrapper, NoteWrapper } from './summary.style'
 import Spinner from './spinner'
+
+const StyledTable = styled.table`
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: none;
+  outline: none;
+
+  td, th {
+    padding: 8rem;
+    text-align: center;
+  }
+
+  th {
+    font-size: 14rem;
+    font-weight: 200;
+    color: #72757e;
+  }
+
+  td {
+    padding-bottom: 15rem;
+    font-size: 35rem;
+    color: ${props => props.theme.colors.black};
+  }
+
+  .info {
+    color: ${props => props.theme.colors.black};
+  }
+
+  .danger {
+    color: ${props => props.theme.colors.red};
+  }
+
+  .highlight {
+    color: ${props => props.theme.colors.green};
+  }
+
+`
 
 const MyanmarStatus = () => {
   const [data] = useApi('/api/myanmar-status', [])
@@ -14,36 +55,30 @@ const MyanmarStatus = () => {
   return (
     <Wrapper style={{ marginBottom: '80rem' }}>
       <h1 style={{ textAlign: 'center' }} className='mm-font'>မြန်မာ Status</h1>
-      <Flex>
-        <Card>
-          <div className='label mm-font'>စောင့်ကြည့်လူနာ</div>
-          <div className='number info'>{data.underInvestigation}</div>
-        </Card>
-        <Card>
-          <div className='label mm-font'>သံသယလူနာ</div>
-          <div className='number info'>{data.suspected}</div>
-        </Card>
-      </Flex>
-      <Flex>
-        <Card>
-          <div className='label mm-font'>စောင့်ကြည့်/သံသယလူနာစုစုပေါင်း</div>
-          <div className='number info'>{data.underInvestigation + data.suspected}</div>
-        </Card>
-        <Card>
-          <div className='label mm-font'>ဓာတ်ခွဲအဖြေစောင့်ဆိုင်းဆဲ</div>
-          <div className='number info'>{data.pending}</div>
-        </Card>
-      </Flex>
-      <Flex>
-        <Card>
-          <div className='label mm-font'>ပိုးတွေ့လူနာ</div>
-          <div className='number danger'>{data.confirmed}</div>
-        </Card>
-        <Card>
-          <div className='label mm-font'>ပိုးမတွေ့လူနာ</div>
-          <div className='number highlight'>{data.negative}</div>
-        </Card>
-      </Flex>
+      <StyledTable>
+        <tbody>
+          <tr>
+            <th className='mm-font'>စောင့်ကြည့်လူနာ</th>
+            <th className='mm-font'>သံသယလူနာ</th>
+            <th className='mm-font'>စောင့်ကြည့်/သံသယလူနာစုစုပေါင်း</th>
+          </tr>
+          <tr>
+            <td>{data.underInvestigation}</td>
+            <td>{data.suspected}</td>
+            <td>{data.underInvestigation + data.suspected}</td>
+          </tr>
+          <tr>
+            <th className='mm-font'>ပိုးတွေ့လူနာ</th>
+            <th className='mm-font'>ပိုးမတွေ့လူနာ</th>
+            <th className='mm-font'>ဓာတ်ခွဲအဖြေစောင့်ဆိုင်းဆဲ</th>
+          </tr>
+          <tr>
+            <td className='danger'>{data.confirmed}</td>
+            <td className='highlight'>{data.negative}</td>
+            <td>{data.pending}</td>
+          </tr>
+        </tbody>
+      </StyledTable>
       <NoteWrapper>
         <p>
           <small>
