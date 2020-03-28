@@ -12,14 +12,18 @@ const PatientTitle = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  font-size: 1.15em;
+  font-size: 1.12em;
 
   svg {
     color: ${props => props.theme.colors.lightPurple};
   }
+  
+  .patient-id {
+    color: ${props => props.theme.colors.offWhite};
+  }
 `
 
-const PatientItem = ({ age, gender, notes, hospital, state, city }) => {
+const PatientItem = ({ patientId, nationality, age, gender, notes, hospital, state, city }) => {
   const [isFold, fold] = useState(true)
   const notesArr = notes.split('\n')
 
@@ -27,7 +31,7 @@ const PatientItem = ({ age, gender, notes, hospital, state, city }) => {
     <PatientWrapper className='mm-font'>
       <PatientTitle onClick={() => fold(!isFold)}>
         <div>
-          {gender} . {age} နှစ် . {state}
+          <span className='patient-id'>{patientId}</span> {gender} . {age} နှစ် . {state}
         </div>
         <div>
           {isFold ? <ArrowDown /> : <ArrowUp />}
