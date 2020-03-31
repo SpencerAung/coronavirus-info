@@ -71,7 +71,7 @@ const MyanmarStatus = () => {
           <tr>
             <th className='mm-font'>ပိုးတွေ့လူနာ</th>
             <th className='mm-font'>ပြန််လည်ကောင်းမွန်သူ</th>
-            <th className='mm-font'>သေဆုံးသူ</th>
+            <th className='mm-font'>ပိုးတွေ့သေဆုံးလူနာ</th>
           </tr>
           <tr>
             <td className='danger'>{data.confirmed}</td>
