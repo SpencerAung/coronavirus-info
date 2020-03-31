@@ -23,7 +23,7 @@ const PatientTitle = styled.div`
   }
 
   .dead {
-    color: ${props => props.theme.colors.pink};
+    color: ${props => props.theme.colors.red};
   }
 
   .recovered {
