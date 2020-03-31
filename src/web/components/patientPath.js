@@ -17,21 +17,36 @@ const PatientTitle = styled.div`
   svg {
     color: ${props => props.theme.colors.lightPurple};
   }
-  
+
   .patient-id {
     color: ${props => props.theme.colors.offWhite};
   }
+
+  .dead {
+    color: ${props => props.theme.colors.pink};
+  }
+
+  .recovered {
+    color: ${props => props.theme.colors.green};
+  }
 `
 
-const PatientItem = ({ patientId, nationality, age, gender, notes, hospital, state, city }) => {
+const PatientItem = ({ patientId, status, nationality, age, gender, notes, hospital, state, city }) => {
   const [isFold, fold] = useState(true)
   const notesArr = notes.split('\n')
+  const pId = patientId > 9 ? patientId : `0${patientId}`
+  let className
+  if (status === 'dead') {
+    className = 'dead'
+  } else if (status === 'recovered') {
+    className = 'recovered'
+  }
 
   return (
     <PatientWrapper className='mm-font'>
       <PatientTitle onClick={() => fold(!isFold)}>
-        <div>
-          <span className='patient-id'>{patientId}</span> {gender} . {age} နှစ် . {state}
+        <div className={className}>
+          <span className='patient-id'>{pId}</span> {gender} . {age} နှစ် . {state}
         </div>
         <div>
           {isFold ? <ArrowDown /> : <ArrowUp />}

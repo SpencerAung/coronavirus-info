@@ -7,6 +7,7 @@ const grey = '#72757e'
 const green = '#2cb67d'
 const offWhite = '#dddddd'
 const washedWhite = '#f8f8f8'
+const pink = '#ff8ba7'
 
 export default {
   colors: {
@@ -19,6 +20,7 @@ export default {
     green,
     offWhite,
     washedWhite,
+    pink,
     primary: purple,
     secondary: lightPurple,
     tertiary: red,
