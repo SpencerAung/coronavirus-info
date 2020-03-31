@@ -59,24 +59,24 @@ const MyanmarStatus = () => {
       <StyledTable>
         <tbody>
           <tr>
-            <th className='mm-font'>စောင့်ကြည့်လူနာ</th>
-            <th className='mm-font'>သံသယလူနာ</th>
             <th className='mm-font'>စောင့်ကြည့်/သံသယလူနာစုစုပေါင်း</th>
+            <th className='mm-font'>ပိုးမတွေ့လူနာ</th>
+            <th className='mm-font'>ဓါတ်ခွဲအဖြေစောင့်ဆိုင်းဆဲ</th>
           </tr>
           <tr>
-            <td>{data.underInvestigation}</td>
-            <td>{data.suspected}</td>
             <td>{data.underInvestigation + data.suspected}</td>
+            <td className='highlight'>{data.negative}</td>
+            <td>{data.pending}</td>
           </tr>
           <tr>
             <th className='mm-font'>ပိုးတွေ့လူနာ</th>
-            <th className='mm-font'>ပိုးမတွေ့လူနာ</th>
-            <th className='mm-font'>ဓာတ်ခွဲအဖြေစောင့်ဆိုင်းဆဲ</th>
+            <th className='mm-font'>ပြန််လည်ကောင်းမွန်သူ</th>
+            <th className='mm-font'>သေဆုံးသူ</th>
           </tr>
           <tr>
             <td className='danger'>{data.confirmed}</td>
-            <td className='highlight'>{data.negative}</td>
-            <td>{data.pending}</td>
+            <td className='highlight'>{data.recovered}</td>
+            <td className='danger'>{data.deaths}</td>
           </tr>
         </tbody>
       </StyledTable>
