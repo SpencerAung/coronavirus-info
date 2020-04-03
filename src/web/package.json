@@ -11,7 +11,7 @@
     "@emotion/styled": "^10.0.27",
     "airtable": "^0.8.1",
     "emotion-theming": "^10.0.27",
-    "next": "^9.2.1",
+    "next": "^9.3.2",
     "next-ga": "^2.3.4",
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
