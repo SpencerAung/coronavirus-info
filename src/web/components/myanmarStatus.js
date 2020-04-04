@@ -55,7 +55,7 @@ const MyanmarStatus = () => {
 
   return (
     <Wrapper style={{ marginBottom: '80rem' }}>
-      <h1 style={{ textAlign: 'center' }} className='mm-font'>မြန်မာ Status</h1>
+      <h1 style={{ textAlign: 'center' }}><span className='mm-font'>မြန်မာ</span> Status</h1>
       <StyledTable>
         <tbody>
           <tr>
