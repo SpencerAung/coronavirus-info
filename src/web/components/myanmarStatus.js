@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 
+import { toLocaleString } from '../helpers'
 import useApi from '../hooks/useApi'
 import { Wrapper, NoteWrapper } from './summary.style'
 import Spinner from './spinner'
@@ -59,24 +60,24 @@ const MyanmarStatus = () => {
       <StyledTable>
         <tbody>
           <tr>
-            <th className='mm-font'>စောင့်ကြည့်/သံသယလူနာစုစုပေါင်း</th>
-            <th className='mm-font'>ပိုးမတွေ့လူနာ</th>
-            <th className='mm-font'>ဓါတ်ခွဲအဖြေစောင့်ဆိုင်းဆဲ</th>
+            <th className='mm-font'>စောင့်ကြည့်လူနာစုစုပေါင်း</th>
+            <th className='mm-font' />
+            <th className='mm-font'>ဓာတ်ခွဲစစ်ဆေးသူစုစုပေါင်း</th>
           </tr>
           <tr>
-            <td>{data.underInvestigation + data.suspected}</td>
-            <td className='highlight'>{data.negative}</td>
-            <td>{data.pending}</td>
+            <td>{toLocaleString(data.underInvestigation)}</td>
+            <td className='highlight' />
+            <td>{toLocaleString(data.totalTested)}</td>
           </tr>
           <tr>
             <th className='mm-font'>ပိုးတွေ့လူနာ</th>
-            <th className='mm-font'>ပြန််လည်ကောင်းမွန်သူ</th>
+            <th className='mm-font'>ပိုးတွေ့ပြန်လည်သက်သာ</th>
             <th className='mm-font'>ပိုးတွေ့သေဆုံးလူနာ</th>
           </tr>
           <tr>
-            <td className='danger'>{data.confirmed}</td>
-            <td className='highlight'>{data.recovered}</td>
-            <td className='danger'>{data.deaths}</td>
+            <td className='danger'>{toLocaleString(data.confirmed)}</td>
+            <td className='highlight'>{toLocaleString(data.recovered)}</td>
+            <td className='danger'>{toLocaleString(data.deaths)}</td>
           </tr>
         </tbody>
       </StyledTable>
