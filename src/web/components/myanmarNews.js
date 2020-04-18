@@ -3,7 +3,8 @@ import useApi from '../hooks/useApi'
 
 import { getFormattedDate } from '../helpers'
 const MyanmarNews = () => {
-  const dateStr = getFormattedDate(new Date())
+  const tmrw = new Date().setDate(new Date().getUTCDate() + 1)
+  const dateStr = getFormattedDate(new Date(tmrw))
   const { items = [] } = useApi(`https://due79jm6nb.execute-api.ap-southeast-1.amazonaws.com/v1/news/covid-19?pageSize=30&from=${dateStr}`, {})
   const news = items.map(item => ({
     url: item.url,
