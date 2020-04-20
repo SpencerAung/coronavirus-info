@@ -26,7 +26,7 @@ const MyanmarNews = ({ title, pageSize, from, to }) => {
 
   return (
     <div>
-      <h1 className='mm-font'>{title}</h1>
+      <h1>{title}</h1>
       {news.map(item => <NewsItem titleClassName='mm-font' key={item.id} {...item} />)}
     </div>
   )
