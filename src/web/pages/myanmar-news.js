@@ -6,7 +6,7 @@ import { getFormattedDate } from '../helpers'
 
 const MyanmarNewsPage = () => {
   const todayDateStr = getFormattedDate(new Date())
-  const yesterday = new Date().setDate(new Date().getUTCDate() - 1)
+  const yesterday = new Date().setDate(new Date().getDate() - 1)
   const yesterdayDateStr = getFormattedDate(new Date(yesterday))
 
   return (
