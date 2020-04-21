@@ -9,7 +9,7 @@ const getNewsApiUrl = params => {
 const MyanmarNews = ({ title, pageSize, from, to }) => {
   const url = getNewsApiUrl({ pageSize, from, to })
 
-  const { items = [] } = useApi(url, {})
+  const { items = [], totalItems = 0 } = useApi(url, {})
   const news = items.map(item => ({
     url: item.url,
     title: item.title,
@@ -19,16 +19,13 @@ const MyanmarNews = ({ title, pageSize, from, to }) => {
   })
   )
 
-  if (news.length === 0) {
-    return null
-  }
-
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>{title}</h1>
         <p>{from}</p>
       </div>
+      {news.length === 0 && totalItems === 0 && <p>No news yet. Please come back later or refresh the page.</p>}
       {news.map(item => <NewsItem titleClassName='mm-font' key={item.id} {...item} />)}
     </div>
   )
