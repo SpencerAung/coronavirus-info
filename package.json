@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Template repository for JS",
   "main": "index.js",
+  "engines": {
+    "node": "~10.15.0",
+    "npm": "~6.9.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "standard --fix",

@@ -1,3 +1,5 @@
+framworkVersion: "=1.67.3"
+
 service: coronavirus-historic-data
 app: coronavirus-info
 org: spenceraung

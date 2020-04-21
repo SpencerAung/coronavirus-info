@@ -2,7 +2,7 @@
   "name": "lambda",
   "version": "1.0.0",
   "devDependencies": {
-    "serverless": "^1.63.0",
+    "serverless": "^1.67.3",
     "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^5.12.1"
   },
