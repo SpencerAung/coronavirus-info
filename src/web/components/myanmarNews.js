@@ -26,7 +26,10 @@ const MyanmarNews = ({ title, pageSize, from, to }) => {
 
   return (
     <div>
-      <h1>{title}</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>{title}</h1>
+        <p>{from}</p>
+      </div>
       {news.map(item => <NewsItem titleClassName='mm-font' key={item.id} {...item} />)}
     </div>
   )
