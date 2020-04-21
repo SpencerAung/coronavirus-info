@@ -1,6 +1,9 @@
+require('dotenv').config()
+
 module.exports = {
   env: {
-    AIRTABLE_API_KEY: 'key5MyCAZWXp4oGbv',
-    API_ENDPOINT: 'https://t5een01pic.execute-api.ap-northeast-1.amazonaws.com/prod/coronavirus-data'
+    AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
+    API_ENDPOINT: process.env.API_ENDPOINT,
+    NEWS_API_ENDPOINT: process.env.NEWS_API_ENDPOINT
   }
 }

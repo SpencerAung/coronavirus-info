@@ -2,9 +2,8 @@ import NewsItem from './newsItem'
 import PropTypes from 'prop-types'
 import useApi from '../hooks/useApi'
 
-const API_URL = 'https://due79jm6nb.execute-api.ap-southeast-1.amazonaws.com/v1/news/covid-19'
 const getNewsApiUrl = params => {
-  return API_URL + '?' + Object.keys(params).map((key) =>
+  return process.env.NEWS_API_ENDPOINT + '?' + Object.keys(params).map((key) =>
     `${key}=${params[key]}`).join('&')
 }
 const MyanmarNews = ({ title, pageSize, from, to }) => {
