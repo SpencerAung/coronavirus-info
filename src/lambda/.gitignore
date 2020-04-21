@@ -7,3 +7,7 @@ jspm_packages
 
 # Dynamodb
 .dynamodb
+
+# config files
+config/config.*.json
+!config/config.sample.json

@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 
 const fetchData = async () => {
-  const fetched = await fetch(process.env.JHU_API_ENDPOINT)
+  const fetched = await fetch(process.env.API_ENDPOINT)
   const result = await fetched.json()
   return parseData(result.features)
 }
