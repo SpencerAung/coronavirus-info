@@ -8,6 +8,7 @@ import Spinner from './spinner'
 
 const FilterButton = styled.button`
   margin: 5rem;
+  padding: 5rem;
   border: none;
   color: #fff;
   background-color: ${props => props.active ? props.theme.colors.pink : props.theme.colors.offWhite};
