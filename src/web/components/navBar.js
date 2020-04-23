@@ -5,7 +5,7 @@ import { keyframes } from '@emotion/core'
 const StyledNav = styled.nav`
   padding: 10rem;
   display: grid;
-  grid-template-columns: 3fr 7fr;
+  grid-template-columns: 50px 9fr;
   grid-column-gap: 10px;
   grid-template-areas: "logo-g nav-g";
   border-bottom: 1px solid ${props => props.theme.colors.washedWhite};
@@ -38,19 +38,6 @@ const rotateKeyFrame = keyframes`
   }
 `
 const Logo = styled.div`
-  display: grid;
-  grid-template-columns: 35px 150px;
-  grid-template-areas: "icon-g name-g";
-  font-size: 20rem;
-
-  .icon-g {
-    grid-area: icon-g;
-    align-self: center;
-  }
-  .name-g {
-    grid-area: name-g;
-    align-self: center;
-  }
   .rotate {
     animation: ${rotateKeyFrame} 15s infinite linear;
   }
@@ -63,12 +50,14 @@ const NavBar = () => {
           <a>
             <Logo>
               <img className='icon-g rotate' src='/logo.png' alt='Coronavirus Info Logo' width='30' />
-              <span className='name-g'>Coronavirus Info</span>
             </Logo>
           </a>
         </Link>
       </div>
       <div className='nav-g'>
+        <Link href='/'>
+          <a style={{ marginRight: '20px' }}>Global Status</a>
+        </Link>
         <Link href='/myanmar-news'>
           <a className='mm-font'>မြန်မာသတင်း</a>
         </Link>
