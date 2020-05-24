@@ -65,3 +65,8 @@ typings/
 
 # backpack
 .build
+
+#tags
+tags
+tags.lock
+tags.temp
