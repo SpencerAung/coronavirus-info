@@ -17,6 +17,7 @@ const StyledTable = styled.table`
   th {
     padding: 8rem;
     text-align: center;
+    vertical-align: top;
   }
 
   th {
@@ -42,6 +43,16 @@ const StyledTable = styled.table`
 
   .highlight {
     color: ${(props) => props.theme.colors.green};
+  }
+
+  span,
+  small {
+    display: block;
+  }
+
+  small {
+    font-size: 20rem;
+    font-weight: 200;
   }
 `
 
@@ -71,9 +82,24 @@ const MyanmarStatus = ({ fetchedData }) => {
             <th className='mm-font'>ပိုးတွေ့သေဆုံးလူနာ</th>
           </tr>
           <tr>
-            <td className='danger'>{toLocaleString(data.confirmed)}</td>
-            <td className='highlight'>{toLocaleString(data.recovered)}</td>
-            <td className='danger'>{toLocaleString(data.deaths)}</td>
+            <td className='danger'>
+              <span>{toLocaleString(data.confirmed)}</span>
+              {data.changeInConfirmed > 0 && (
+                <small>+({toLocaleString(data.changeInConfirmed)})</small>
+              )}
+            </td>
+            <td className='highlight'>
+              <span>{toLocaleString(data.recovered)}</span>
+              {data.changeInRecovered > 0 && (
+                <small>+({toLocaleString(data.changeInRecovered)})</small>
+              )}
+            </td>
+            <td className='danger'>
+              <span>{toLocaleString(data.deaths)}</span>
+              {data.changeInDeaths > 0 && (
+                <small>+({toLocaleString(data.changeInDeaths)})</small>
+              )}
+            </td>
           </tr>
         </tbody>
       </StyledTable>
