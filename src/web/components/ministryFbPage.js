@@ -1,4 +1,3 @@
-
 import styled from '@emotion/styled'
 
 const IFrameWrapper = styled.div`
@@ -15,8 +14,8 @@ export default () => (
       height='500'
       style={{ border: 'none', overflow: 'hidden' }}
       scrolling='no'
-      frameborder='0'
-      allowTransparency='true'
+      frameBorder='0'
+      allowtransparency='true'
       allow='encrypted-media'
     />
   </IFrameWrapper>

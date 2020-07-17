@@ -2,12 +2,17 @@ import styled from '@emotion/styled'
 import Router from 'next/router'
 import withGA from 'next-ga'
 import { ThemeProvider } from 'emotion-theming'
-import { FaGithub as GithubIcon, FaTwitter as TwitterIcon } from 'react-icons/fa'
+import {
+  FaGithub as GithubIcon,
+  FaTwitter as TwitterIcon
+} from 'react-icons/fa'
 
 import NavBar from '../components/navBar'
 import '../styles/normalize.css'
 import '../styles/style.css'
 import theme from '../theme'
+import useExternalApiData from '../hooks/useExternalApiData'
+import StatusContext from '../context/statusContext'
 
 const Wrapper = styled.div`
   width: 600px;
@@ -37,16 +42,31 @@ const Footer = styled.footer`
 `
 
 function MyApp ({ Component, pageProps }) {
+  const fetchedData = useExternalApiData(process.env.API_ENDPOINT, [])
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
         <NavBar />
         <Content>
-          <Component {...pageProps} />
+          <StatusContext.Provider value={fetchedData}>
+            <Component {...pageProps} />
+          </StatusContext.Provider>
         </Content>
         <Footer style={{ textAlign: 'center', margin: '50rem' }}>
-          <a href='https://github.com/SpencerAung/coronavirus-info' target='_blank' rel='nofollow noreferrer noopener'><GithubIcon /> Github</a>
-          <a href='https://twitter.com/SpencerAung' target='_blank' rel='nofollow noreferrer noopener'><TwitterIcon /> SpencerAung</a>
+          <a
+            href='https://github.com/SpencerAung/coronavirus-info'
+            target='_blank'
+            rel='nofollow noreferrer noopener'
+          >
+            <GithubIcon /> Github
+          </a>
+          <a
+            href='https://twitter.com/SpencerAung'
+            target='_blank'
+            rel='nofollow noreferrer noopener'
+          >
+            <TwitterIcon /> SpencerAung
+          </a>
         </Footer>
       </Wrapper>
     </ThemeProvider>
