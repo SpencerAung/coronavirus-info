@@ -15,7 +15,7 @@
     "migrate:db": "serverless dynamodb migrate"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "serverless-dynamodb-local": "^0.2.39",
     "uuid": "^3.4.0"
   }
